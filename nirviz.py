@@ -53,7 +53,7 @@ class visualize:
 
         return viz_graph
 
-    def __repr__(self) -> str:
+    def show(self) -> None:
         if self.render_ipython and not importlib.util.find_spec("IPython") is None:
             import IPython
 
@@ -68,5 +68,8 @@ class visualize:
             else:
                 raise ValueError(f"Unsupported format: {self.format}")
             IPython.display.display(image)
+        else:
+            print("error: cannot display graph: no IPython environment detected.")
 
+    def __repr__(self) -> str:
         return self.viz_graph.pipe(format=self.format, encoding="utf-8")
