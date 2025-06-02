@@ -1,0 +1,28 @@
+node-categories:
+  - name: input-output
+    patterns: ["input", "output"]
+    style:
+      color: "black"
+      style: "dashed"
+      shape: "box"
+
+  - name: connection
+    patterns: ["affine", "linear", "convolution"]
+    style:
+      color: "#71c8b0"
+      style: "filled"
+      shape: "box"
+
+  - name: computation
+    patterns: ["li", "i&f", "lif"]
+    style:
+      color: "#a0d5f1"
+      style: "filled"
+      shape: "box"
+
+defaults:
+  - node:
+      style:
+      color: "black"
+      style: "dashed"
+      shape: "box"
