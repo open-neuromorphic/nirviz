@@ -30,30 +30,28 @@ class visualize:
 
     def __pick_style(self, name: str) -> typing.Dict[str, str]:
         categories = self.style_dict['node-categories']
-        for cat in categories:
-            for p in cat['patterns']:
-                regexp = re.compile(f"^{p}.*")
-                if re.fullmatch(regexp, name.lower()):
-                    return cat['style']
-        return categories['defaults']['node']
+        for cat_id in categories:
+            cat = categories[cat_id]
+            if name in cat['patterns']:
+                return cat['style']
+
+        return self.style_dict['defaults']['node']['style']
 
 
     def __construct_graph(self) -> graphviz.Digraph:
         viz_graph = graphviz.Digraph(format=self.format,
                                      graph_attr={'rankdir': 'LR'})
-
         # Generate nodes
-        for name in self.nir_graph.nodes.keys():
+        for node_id in self.nir_graph.nodes:
+            name = type(self.nir_graph.nodes[node_id]).__name__
             style = self.__pick_style(name)
-            viz_graph.node(name, **style)
+            viz_graph.node(node_id, label=name, **style)
 
         # Generate edges
-        for src, tgt in self.nir_graph.edges:
-            viz_graph.edge(src, tgt)
+        for src_id, tgt_id in self.nir_graph.edges:
+            viz_graph.edge(src_id, tgt_id)
 
         return viz_graph
-
-
 
     def __repr__(self) -> str:
         if self.render_ipython and not importlib.util.find_spec("IPython") is None:

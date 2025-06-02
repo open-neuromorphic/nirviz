@@ -1,28 +1,34 @@
 node-categories:
-  - name: input-output
-    patterns: ["input", "output"]
+  input-output:
+    patterns: ["Input", "Output"]
     style:
       color: "black"
       style: "dashed"
       shape: "box"
 
-  - name: connection
-    patterns: ["affine", "linear", "convolution"]
+  connection:
+    patterns: ["Affine", "Linear"]
     style:
       color: "#71c8b0"
       style: "filled"
       shape: "box"
 
-  - name: computation
-    patterns: ["li", "i&f", "lif"]
+  transform:
+    patterns: ["Flatten"]
+    style:
+      color: "#e4b9dd"
+      style: "filled"
+      shape: "box"
+
+  computation:
+    patterns: ["LIF", "CubaLIF"]
     style:
       color: "#a0d5f1"
       style: "filled"
       shape: "box"
 
 defaults:
-  - node:
+    node:
       style:
-      color: "black"
-      style: "dashed"
-      shape: "box"
+        color: "black"
+        style: "dashed"
