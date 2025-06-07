@@ -6,7 +6,7 @@ Customise your node colour preferences in [style.yml](./style.yml), and quickly 
 
 This work is in progress.
 
-## Running Example
+## Running Example (Jupyter Notebook)
 By running the following code (from a notebook),
 ```python
 import nir
@@ -42,3 +42,11 @@ Similar to Figure 3 of the publication.
 <picture>
 <img alt="nirviz output" src="https://raw.githubusercontent.com/open-neuromorphic/nirviz/main/img/fig3.png">
 </picture>
+
+## Running example (CLI)
+To convert a saved NIR graph (e.g. srnn.nir) to a PNG or SVG, you can use one of the following commands:
+```bash
+pip -m nirviz srnn.nir              # SVG -> stdout
+pip -m nirviz srnn.nir img/srnn.png # PNG -> file
+pip -m nirviz srnn.nir img/srnn.svg # SVG -> file
+```
