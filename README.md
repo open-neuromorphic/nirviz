@@ -46,7 +46,7 @@ Similar to Figure 3 of the publication.
 ## Running example (CLI)
 To convert a saved NIR graph (e.g. srnn.nir) to a PNG or SVG, you can use one of the following commands:
 ```bash
-pip -m nirviz srnn.nir              # SVG -> stdout
-pip -m nirviz srnn.nir img/srnn.png # PNG -> file
-pip -m nirviz srnn.nir img/srnn.svg # SVG -> file
+python -m nirviz srnn.nir              # SVG -> stdout
+python -m nirviz srnn.nir img/srnn.png # PNG -> file
+python -m nirviz srnn.nir img/srnn.svg # SVG -> file
 ```
