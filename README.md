@@ -40,5 +40,5 @@ You would get the following visualisation
 Similar to Figure 3 of the publication.
 
 <picture>
-<img alt="nirviz output" src="https://raw.githubusercontent.com/open-neuromorphic/nirviz/main/img/fig3.png">
+<img alt="Figure 3 of NIR paper for comparison to output" src="https://raw.githubusercontent.com/open-neuromorphic/nirviz/main/img/fig3.png">
 </picture>
