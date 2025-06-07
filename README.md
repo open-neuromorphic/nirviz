@@ -33,8 +33,12 @@ viz.show()
 
 You would get the following visualisation
 
-![visualisation](./img/vis.png)
+<picture>
+<img alt="nirviz output" src="https://raw.githubusercontent.com/open-neuromorphic/nirviz/main/img/vis.png">
+</picture>
 
 Similar to Figure 3 of the publication.
 
-![Figure 3 of NIR paper](./img/fig3.png)
+<picture>
+<img alt="nirviz output" src="https://raw.githubusercontent.com/open-neuromorphic/nirviz/main/img/fig3.png">
+</picture>
