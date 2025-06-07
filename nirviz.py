@@ -1,4 +1,4 @@
-import dataclasses
+from dataclasses import dataclass, field
 import yaml
 import re
 import graphviz
@@ -7,14 +7,14 @@ import nir
 import typing
 import importlib.util
 import pathlib
+import PIL
+import io
 
 
-@dataclasses.dataclass
+@dataclass
 class visualize:
     nir_graph: typing.Union[nir.NIRGraph, str, pathlib.Path]
-    format: str = "svg"
-    render_ipython: bool = True
-    style_file = pathlib.Path("./style.yml")
+    style_file: pathlib.Path = field(default_factory=lambda: pathlib.Path("./style.yml"))
 
     def __post_init__(self):
         if isinstance(self.nir_graph, (str, pathlib.Path)):
@@ -39,7 +39,7 @@ class visualize:
 
 
     def __construct_graph(self) -> graphviz.Digraph:
-        viz_graph = graphviz.Digraph(format=self.format,
+        viz_graph = graphviz.Digraph(format="svg",
                                      graph_attr={'rankdir': 'LR'})
         # Generate nodes
         for node_id in self.nir_graph.nodes:
@@ -54,22 +54,19 @@ class visualize:
         return viz_graph
 
     def show(self) -> None:
-        if self.render_ipython and not importlib.util.find_spec("IPython") is None:
+        if importlib.util.find_spec("IPython"):
             import IPython
 
             svg_output = self.viz_graph.pipe(format="svg")
-
-            if self.format == "svg":
-                image = IPython.display.SVG(svg_output)
-            elif self.format == "png":
-                # Convert SVG to PNG using cairosvg
-                png_output = cairosvg.svg2png(bytestring=svg_output)
-                image = IPython.display.Image(png_output)
-            else:
-                raise ValueError(f"Unsupported format: {self.format}")
+            image = IPython.display.SVG(svg_output)
             IPython.display.display(image)
         else:
             print("error: cannot display graph: no IPython environment detected.")
 
+    def to_image(self) -> PIL.Image.Image:
+        svg_output = self.viz_graph.pipe(format="svg")
+        png_bytes = cairosvg.svg2png(bytestring=svg_output)
+        return PIL.Image.open(io.BytesIO(png_bytes))
+
     def __repr__(self) -> str:
-        return self.viz_graph.pipe(format=self.format, encoding="utf-8")
+        return self.viz_graph.pipe(format="svg", encoding="utf-8")

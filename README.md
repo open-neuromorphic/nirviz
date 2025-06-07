@@ -34,7 +34,7 @@ viz.show()
 You would get the following visualisation
 
 <picture>
-<img alt="nirviz output" src="https://raw.githubusercontent.com/open-neuromorphic/nirviz/main/img/vis.png">
+<img alt="nirviz output" src="https://raw.githubusercontent.com/open-neuromorphic/nirviz/main/img/srnn.png">
 </picture>
 
 Similar to Figure 3 of the publication.
