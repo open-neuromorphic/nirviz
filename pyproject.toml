@@ -1,12 +1,19 @@
 [build-system]
 requires = [
-  "setuptools>=60",
-  "setuptools-scm>=8.0"
+  "setuptools>=77.0.0",
+  "setuptools-scm>=8.0",
+  "wheel",
+  "build"
 ]
+build-backend = "setuptools.build_meta"
+
 
 [project]
 name = "nirviz"
+version = "0.1.0"
 description = "Visualisation tool for the Neuromorphic Intermediate Representation"
+license-files = ["LICENSE"]
+license = "BSD-3-Clause"
 readme = "README.md"
 authors = [
         { name = "Jens Egholm Pedersen", email = "jens@jepedersen.dk" },
@@ -25,7 +32,6 @@ classifiers = [
 ]
 
 dependencies = ["nir", "graphviz", "cairosvg", "pyyaml"]
-dynamic = ["version"] # Version number read from __init__.py
 requires-python = ">=3.9"
 
 [project.urls]
