@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 import yaml
 import re
 import graphviz
@@ -6,6 +6,7 @@ import cairosvg
 import nir
 import typing
 import importlib.util
+import importlib.resources
 import pathlib
 import PIL
 import io
@@ -14,18 +15,25 @@ import io
 @dataclass
 class visualize:
     nir_graph: typing.Union[nir.NIRGraph, str, pathlib.Path]
-    style_file: pathlib.Path = field(default_factory=lambda: pathlib.Path("./style.yml"))
+    style_file: typing.Optional[pathlib.Path] = None
 
     def __post_init__(self):
         if isinstance(self.nir_graph, (str, pathlib.Path)):
             self.nir_graph = nir.read(self.nir_graph)
 
+        if self.style_file is not None and not isinstance(self.style_file, pathlib.Path):
+            self.style_file = pathlib.Path(self.style_file)
+
         self.style_dict = self.__load_style_file()
         self.viz_graph = self.__construct_graph()
 
     def __load_style_file(self) -> typing.Dict[str, typing.Dict[str, str]]:
-        with open(self.style_file, 'r') as f:
-            config = yaml.safe_load(f)
+        if self.style_file is None:
+            with importlib.resources.files('nirviz').joinpath('style.yml').open('r') as f:
+                config = yaml.safe_load(f)
+        else:
+            with open(self.style_file, 'r') as f:
+                config = yaml.safe_load(f)
         return config
 
     def __pick_style(self, name: str) -> typing.Dict[str, str]:
