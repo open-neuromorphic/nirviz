@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nirviz"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Visualisation tool for the Neuromorphic Intermediate Representation"
 license-files = ["LICENSE"]
 license = "BSD-3-Clause"
@@ -39,3 +39,6 @@ homepage = "https://github.com/open-neuromorphic/nirviz"
 
 [tool.setuptools]
 packages = ["nirviz"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
