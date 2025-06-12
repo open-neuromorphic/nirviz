@@ -1,12 +1,6 @@
 [build-system]
-requires = [
-  "setuptools>=77.0.0",
-  "setuptools-scm>=8.0",
-  "wheel",
-  "build"
-]
+requires = ["setuptools>=42", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
-
 
 [project]
 name = "nirviz"
