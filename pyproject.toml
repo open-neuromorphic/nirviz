@@ -10,6 +10,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nirviz"
+dynamic = ["version"]
 description = "Visualisation tool for the Neuromorphic Intermediate Representation"
 license-files = ["LICENSE"]
 license = "BSD-3-Clause"
@@ -29,7 +30,6 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Physics",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-dynamic = ["version"]
 dependencies = ["nir", "graphviz", "cairosvg", "pyyaml"]
 requires-python = ">=3.9"
 
@@ -38,3 +38,6 @@ homepage = "https://github.com/open-neuromorphic/nirviz"
 
 [tool.setuptools]
 packages = ["nirviz"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
