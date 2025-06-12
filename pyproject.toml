@@ -34,4 +34,5 @@ homepage = "https://github.com/open-neuromorphic/nirviz"
 packages = ["nirviz"]
 
 [tool.setuptools_scm]
-version_scheme = "post-release"
+version_scheme = "only-version"
+local_scheme = "no-local-version"
