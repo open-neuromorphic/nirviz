@@ -41,9 +41,9 @@ class visualize:
         for cat_id in categories:
             cat = categories[cat_id]
             if name in cat['patterns']:
-                return cat['style']
+                return cat['attributes']
 
-        return self.style_dict['defaults']['node']['style']
+        return self.style_dict['defaults']['node']['attributes']
 
 
     def __construct_graph(self) -> graphviz.Digraph:

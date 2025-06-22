@@ -1,48 +1,48 @@
 node-categories:
   input-output:
     patterns: ["Input", "Output"]
-    style:
+    attributes:
       color: "black"
       style: "dashed"
       shape: "box"
 
   connection-full:
     patterns: ["Affine", "Linear"]
-    style:
+    attributes:
       color: "#71c8b0"
       style: "filled"
       shape: "box"
 
   connection-conv:
     patterns: ["Conv1d", "Conv2d"]
-    style:
+    attributes:
       color: "#ffc655"
       style: "filled"
       shape: "box"
 
   transform:
     patterns: ["Flatten"]
-    style:
+    attributes:
       color: "#e4b9dd"
       style: "filled"
       shape: "box"
 
   pool:
     patterns: ["AvgPool1d", "AvgPool2d"]
-    style:
+    attributes:
       color: "#4a9bff"
       style: "filled"
       shape: "box"
 
   computation:
     patterns: ["IF", "LIF", "CubaLIF"]
-    style:
+    attributes:
       color: "#a0d5f1"
       style: "filled"
       shape: "box"
 
 defaults:
     node:
-      style:
+      attributes:
         color: "black"
         style: "dashed"
