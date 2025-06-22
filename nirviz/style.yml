@@ -6,10 +6,17 @@ node-categories:
       style: "dashed"
       shape: "box"
 
-  connection:
+  connection-full:
     patterns: ["Affine", "Linear"]
     style:
       color: "#71c8b0"
+      style: "filled"
+      shape: "box"
+
+  connection-conv:
+    patterns: ["Conv1d", "Conv2d"]
+    style:
+      color: "#ffc655"
       style: "filled"
       shape: "box"
 
@@ -20,8 +27,15 @@ node-categories:
       style: "filled"
       shape: "box"
 
+  pool:
+    patterns: ["AvgPool1d", "AvgPool2d"]
+    style:
+      color: "#4a9bff"
+      style: "filled"
+      shape: "box"
+
   computation:
-    patterns: ["LIF", "CubaLIF"]
+    patterns: ["IF", "LIF", "CubaLIF"]
     style:
       color: "#a0d5f1"
       style: "filled"
