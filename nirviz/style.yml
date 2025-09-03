@@ -1,3 +1,6 @@
+meta-categories:
+  draw-direction: "left-right" # top-down or left-right
+
 node-categories:
   input-output:
     patterns: ["Input", "Output"]

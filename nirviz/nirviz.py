@@ -16,6 +16,7 @@ import io
 class visualize:
     nir_graph: typing.Union['nir.NIRGraph', str, pathlib.Path]
     style_file: typing.Optional[pathlib.Path] = None
+    draw_direction: typing.Optional[str] = None
     DEFAULT_STYLE_FILE = importlib.resources.files(__package__) / "style.yml"
 
     @classmethod
@@ -51,10 +52,25 @@ class visualize:
 
         return self.style_dict['defaults']['node']['attributes']
 
+    def __get_rankdir(self) -> str:
+        if self.draw_direction is None:
+            self.draw_direction = self.style_dict["meta-categories"]["draw-direction"]
+            source = f"{self.style_file} [meta-categories/draw-direction]"
+        else:
+            source = "argument \"draw_direction\""
+
+        match self.draw_direction:
+            case "top-down":
+                return "TB"
+            case "left-right":
+                return "LR"
+            case x:
+                raise ValueError(f'invalid value \"{x}\" in {source}: must be either "top-down" or "left-right"')
+
 
     def __construct_graph(self) -> graphviz.Digraph:
         viz_graph = graphviz.Digraph(format="svg",
-                                     graph_attr={'rankdir': 'LR'})
+                                     graph_attr={'rankdir': self.__get_rankdir()})
         # Generate nodes
         for node_id in self.nir_graph.nodes:
             name = type(self.nir_graph.nodes[node_id]).__name__
