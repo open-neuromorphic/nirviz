@@ -59,13 +59,12 @@ class visualize:
         else:
             source = "argument \"draw_direction\""
 
-        match self.draw_direction:
-            case "top-down":
-                return "TB"
-            case "left-right":
-                return "LR"
-            case x:
-                raise ValueError(f'invalid value \"{x}\" in {source}: must be either "top-down" or "left-right"')
+        rankdirMap = {'top-bottom': "TB",
+                      'left-right': "LR"}
+        try:
+            return rankdirMap[self.draw_direction]
+        except KeyError as x:
+            raise ValueError(f'invalid value \"{x.args[0]}\" in {source}: must be either {list(rankdirMap.keys())}')
 
 
     def __construct_graph(self) -> graphviz.Digraph:
