@@ -62,7 +62,7 @@ print(f"nirviz style file location: {nirviz.visualize.default_style_file()}")
 
 or by passing your own `style.yml`:
 ```python
-import python
+import nirviz
 viz = nirviz.visualize(nir_graph, style_file="style.yml")
 viz.show()
 ```
@@ -71,7 +71,7 @@ python -m nirviz --yaml './style.yml' srnn.nir
 ```
 
 ### Style file format
-The format currently only supports setting node attributes. The node attributes correspond to [Graphviz node attributes.](https://graphviz.org/docs/nodes/). An example file would contain:
+The format currently only supports setting node attributes. The node attributes correspond to [Graphviz node attributes](https://graphviz.org/docs/nodes/). An example file would contain:
 
 ```yaml
 node-categories:

@@ -38,7 +38,7 @@ node-categories:
       shape: "box"
 
   computation:
-    patterns: ["IF", "LIF", "CubaLIF"]
+    patterns: ["CubaLI", "CubaLIF", "I", "IF", "LI", "LIF"]
     attributes:
       color: "#a0d5f1"
       style: "filled"
