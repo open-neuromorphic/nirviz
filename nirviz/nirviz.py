@@ -16,7 +16,7 @@ import io
 class visualize:
     nir_graph: typing.Union['nir.NIRGraph', str, pathlib.Path]
     style_file: typing.Optional[pathlib.Path] = None
-    draw_direction: typing.Optional[str] = None
+    orientation: typing.Optional[str] = None
     DEFAULT_STYLE_FILE = importlib.resources.files(__package__) / "style.yml"
 
     @classmethod
@@ -53,16 +53,16 @@ class visualize:
         return self.style_dict['defaults']['node']['attributes']
 
     def __get_rankdir(self) -> str:
-        if self.draw_direction is None:
-            self.draw_direction = self.style_dict["meta-categories"]["draw-direction"]
+        if self.orientation is None:
+            self.orientation = self.style_dict["meta-categories"]["draw-direction"]
             source = f"{self.style_file} [meta-categories/draw-direction]"
         else:
-            source = "argument \"draw_direction\""
+            source = "argument \"orientation\""
 
-        rankdirMap = {'top-bottom': "TB",
-                      'left-right': "LR"}
+        rankdirMap = {'vertical': "TB",
+                      'horizontal': "LR"}
         try:
-            return rankdirMap[self.draw_direction]
+            return rankdirMap[self.orientation]
         except KeyError as x:
             raise ValueError(f'invalid value \"{x.args[0]}\" in {source}: must be either {list(rankdirMap.keys())}')
 

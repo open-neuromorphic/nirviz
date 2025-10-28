@@ -1,5 +1,5 @@
 meta-categories:
-  draw-direction: "left-right" # top-bottom or left-right
+  orientation: "horizontal" # horizontal or vertical
 
 node-categories:
   input-output:
