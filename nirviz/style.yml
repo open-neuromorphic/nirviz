@@ -31,7 +31,7 @@ node-categories:
       shape: "box"
 
   pool:
-    patterns: ["AvgPool1d", "AvgPool2d"]
+    patterns: ["AvgPool1d", "AvgPool2d", "SumPool2d"]
     attributes:
       color: "#4a9bff"
       style: "filled"
