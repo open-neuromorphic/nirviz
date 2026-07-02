@@ -51,6 +51,19 @@ python -m nirviz srnn.nir img/srnn.png # PNG -> file
 python -m nirviz srnn.nir img/srnn.svg # SVG -> file
 ```
 
+## Developing with Nix
+If you have [Nix](https://nixos.org) installed, `flake.nix` provides a reproducible dev environment (Python, `graphviz`, and the other dependencies) without needing a manually managed venv:
+```bash
+nix develop                 # Drop into pre-packaged shell.
+python -m nirviz srnn.nir   # Example
+```
+
+You can also build or run the package directly, without entering a shell:
+```bash
+nix build .        # build the nirviz package into ./result
+nix run . -- srnn.nir img/srnn.png
+```
+
 ## Customising the style
 You can customise the style you see via the *style file*.
 ### Style file location
