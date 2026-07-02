@@ -27,5 +27,5 @@ nir.write("./srnn.nir", ir)
 # %%
 viz = nirviz.visualize(ir, orientation="horizontal")
 viz.show()
-viz.save("./img/srnn.png")
+viz.save("./img/srnn.png", dpi=300)
 viz.save("./img/srnn.svg")

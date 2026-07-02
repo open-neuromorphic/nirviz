@@ -92,16 +92,20 @@ class visualize:
         else:
             print("error: cannot display graph: no IPython environment detected.")
 
-    def to_image(self) -> PIL.Image.Image:
-        png_bytes = self.viz_graph.pipe(format="png")
+    def to_image(self, dpi: typing.Optional[int] = None) -> PIL.Image.Image:
+        graph = self.viz_graph
+        if dpi is not None:
+            graph = graph.copy()
+            graph.graph_attr['dpi'] = str(dpi)
+        png_bytes = graph.pipe(format="png")
         return PIL.Image.open(io.BytesIO(png_bytes))
 
-    def save(self, path: typing.Union[str, pathlib.Path]) -> None:
+    def save(self, path: typing.Union[str, pathlib.Path], dpi: typing.Optional[int] = None) -> None:
         path = pathlib.Path(path)
         if path.suffix.lower() == ".svg":
             path.write_text(str(self))
         else:
-            self.to_image().save(path)
+            self.to_image(dpi=dpi).save(path)
 
     def __repr__(self) -> str:
         return self.viz_graph.pipe(format="svg", encoding="utf-8")
