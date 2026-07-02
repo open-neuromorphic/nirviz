@@ -17,19 +17,10 @@ if __name__ == "__main__":
     yaml_file = args.yaml
     orientation = args.orientation
     # Load the NIR graph
+    graph = nirviz.visualize(nir_file, style_file=yaml_file, orientation=orientation)
     if args.output == "stdout":
-        graph = nirviz.visualize(nir_file, style_file=yaml_file, orientation=orientation)
-        graph_svg = str(graph)
-        sys.stdout.write(graph_svg)
-    elif args.output.endswith(".svg"):
-        graph = nirviz.visualize(nir_file, style_file=yaml_file, orientation=orientation)
-        graph_svg = str(graph)
-        with open(args.output, "w") as f:
-            f.write(graph_svg)
-    elif args.output.endswith(".png"):
-        graph = nirviz.visualize(nir_file, style_file=yaml_file, orientation=orientation)
-        graph_image = graph.to_image()
-        graph_image.save(args.output)
-
+        sys.stdout.write(str(graph))
+    elif args.output.endswith(".svg") or args.output.endswith(".png"):
+        graph.save(args.output)
     else:
         raise ValueError("Output file must be either .svg or .png format.")

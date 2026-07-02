@@ -96,5 +96,12 @@ class visualize:
         png_bytes = self.viz_graph.pipe(format="png")
         return PIL.Image.open(io.BytesIO(png_bytes))
 
+    def save(self, path: typing.Union[str, pathlib.Path]) -> None:
+        path = pathlib.Path(path)
+        if path.suffix.lower() == ".svg":
+            path.write_text(str(self))
+        else:
+            self.to_image().save(path)
+
     def __repr__(self) -> str:
         return self.viz_graph.pipe(format="svg", encoding="utf-8")
