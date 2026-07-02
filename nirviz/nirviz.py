@@ -2,13 +2,13 @@ from dataclasses import dataclass
 import yaml
 import re
 import graphviz
-import cairosvg
 import nir
 import typing
 import importlib.util
 import importlib.resources
 import pathlib
 import PIL
+import PIL.Image
 import io
 
 
@@ -93,8 +93,7 @@ class visualize:
             print("error: cannot display graph: no IPython environment detected.")
 
     def to_image(self) -> PIL.Image.Image:
-        svg_output = self.viz_graph.pipe(format="svg")
-        png_bytes = cairosvg.svg2png(bytestring=svg_output)
+        png_bytes = self.viz_graph.pipe(format="png")
         return PIL.Image.open(io.BytesIO(png_bytes))
 
     def __repr__(self) -> str:

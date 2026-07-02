@@ -24,7 +24,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Physics",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-dependencies = ["nir", "graphviz", "cairosvg", "pyyaml"]
+dependencies = ["nir", "graphviz", "pyyaml", "pillow"]
 requires-python = ">=3.9"
 
 [project.urls]
